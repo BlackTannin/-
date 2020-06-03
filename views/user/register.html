@@ -1,0 +1,35 @@
+<%- include("../layout/header.html")%>
+<div class="container mt-3">
+    <div class="card mx-auto" style="width: 480px;">
+        <div class="card-header">
+            <h3>用户注册</h3>
+        </div>
+        <div class="card-body">
+            <form action="/users/register" method="post" >
+                <div class="form-inline">
+                    <label for="username">用户名:</label>
+                    <input class="form-control" type="text" name="username" id="username">
+                </div>
+                <div class="form-inline mt-2">
+                    <label for="usepwd">登录密码:</label>
+                    <input class="form-control" type="password" name="userpwd" id="usepwd">
+                </div>
+                <div class="form-inline mt-2">
+                    <label for="reusepwd">确认密码:</label>
+                    <input class="form-control" type="password" name="reuserpwd" id="reusepwd">
+                </div>
+                <div class="form-inline mt-2">
+                    <label for="email">密保邮箱:</label>
+                    <input class="form-control" type="email" name="email" id="email">
+                </div>
+
+                <div class="form-group">
+                    <label for=""></label>
+                    <input class="btn btn-success mt-2" type="submit" value="注册">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<%- include("../layout/footer.html")%>

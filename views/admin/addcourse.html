@@ -1,0 +1,73 @@
+<%- include("./header.html")%>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-2">
+            <%- include("./sidemenu.html")%>
+        </div>
+        <div class="10">
+            <h3>添加课程</h3>
+
+            <div class="card p-3">
+
+                <form action="/admin/addcourse" method="post" enctype="multipart/form-data">
+                    <div class="form-inline mb-2">
+                        <label for="coursename">课程名称</label>
+                        <input type="text"  name="coursename" class="form-control" id="coursename">
+
+                    </div>  <!--列表名称-->
+                    <div class="form-inline mb-2">
+                        <label for="source">视频地址</label>
+                        <input type="text"  name="source" class="form-control" id="source" value="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7cdabcaa763392c86b944eaf4e68d6a3.mp4">
+                    </div>  <!--视频地址-->
+                    <div class="form-inline mb-2">
+                        <label for="category">所属分类</label>
+                        <select class="form-control" name="category" id="category">
+                            <%category.forEach(function(cat,i){%>
+                            <option value="<%=cat._id%>"><%=cat.name%></option>
+                            <%})%>
+                        </select>
+
+                    </div>  <!--所属分类-->
+                    <div class="form-inline mb-2">
+                        <label for="thumbnail">缩略图</label>
+                        <input type="file"  name="thumbnail" class="form-control" id="thumbnail">
+                    </div>  <!--缩略图-->
+                    <div class="form-inline mb-2">
+                        <label for="contents">课程详情</label>
+                        <textarea class="form-control" name="contents" id="contents" cols="30" rows="10">请填写内容</textarea>
+                    </div>  <!--课程详情-->
+                    <div class="form-inline mb-2">
+                        <label for="user">用户</label>
+                        <select class="form-control" name="user" id="user">
+                            <%user.forEach(function(u,i){%>
+                            <option value="<%=u._id%>"><%=u.username%></option>
+                            <%})%>
+                        </select>
+                    </div>  <!--用户-->
+                    <div class="form-inline mb-2">
+                        <label for="price">价格</label>
+                        <input class="form-control" type="number" name="price" id="price">
+                    </div>  <!--价格-->
+                    <div class="form-inline mb-2">
+                        <label for="praise">赞</label>
+                        <input class="form-control" type="number" name="praise" id="praise">
+                    </div>  <!--赞-->
+                    <div class="form-inline mb-2">
+                        <label for="collect">收藏</label>
+                        <input class="form-control" type="number" name="collect" id="collect">
+                    </div>  <!--收藏-->
+                    <div class="form-inline mb-2">
+                        <label for="browse">浏览</label>
+                        <input class="form-control" type="number" name="browse" id="browse">
+                    </div>  <!--浏览-->
+                    <div class="form-group">
+                        <label for="submit"></label>
+                        <button type="submit" class="btn btn-success" id="submit">添加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("./footer.html")%>

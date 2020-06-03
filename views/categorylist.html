@@ -1,0 +1,82 @@
+<%- include("layout/header.html")%>
+
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-10">
+            <h3>课程</h3>
+
+            <div class="row ">
+                <%data.forEach(function(course,i){%>
+                <div class="col-4">
+                    <div class="card mb-4 courserlistcard ">
+                        <a class="linkthumbnail" href="/show/<%=course._id%>">
+                            <%if(course.thumbnail){%>
+                            <img src="/uploads/course/<%=course.thumbnail%>" class="card-img-top " alt="课程名称">
+                            <%}else{%>
+                            <img src="/uploads/course/1.jpg" class="card-img-top" alt="课程名称">
+                            <%}%>
+                            <!--如果有图片就显示图片，没有就显示默认图片-->
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="/show/<%=course._id%>">
+                                    <%=course.name%>
+                                </a>
+                            </h5>
+                            <p class="card-text">
+                                <%=course.contents%>
+                            </p>
+                            <div style="font-size:12px;color:#666;line-height: 1.5em">
+                                <div>讲师:<%=course.user.username%></div>
+                                <div>类别:<%=course.category.name%></div>
+                                <div><%=course.qt_kc%></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%})%>
+
+                <!--
+                   <div class="col-4">
+                       <div class="card" >
+                           <img class="card-img-top" src="/images/ke02.png" alt="课程名称">
+                           <div class="card-body">
+                               <h5 class="card-title">Card title</h5>
+                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                           </div>
+
+                           <div class="card-body">
+                               <a href="#" class="btn btn-outline-success">购买</a>
+                               <a href="#" class="btn btn-outline-info">查看</a>
+                               <a href="#" class="btn btn-outline-danger">试用</a>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="col-4">
+                       <div class="card" >
+                           <img class="card-img-top" src="/images/ke03.png" alt="课程名称">
+                           <div class="card-body">
+                               <h5 class="card-title">Card title</h5>
+                               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                           </div>
+
+                           <div class="card-body">
+                               <a href="#" class="btn btn-outline-success">购买</a>
+                               <a href="#" class="btn btn-outline-info">查看</a>
+                               <a href="#" class="btn btn-outline-danger">试用</a>
+                           </div>
+                       </div>
+                   </div>
+-->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("layout/footer.html")%>

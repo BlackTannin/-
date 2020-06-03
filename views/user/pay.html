@@ -1,0 +1,22 @@
+<%- include("../layout/header.html")%>
+<div class="container mt-3">
+    <div class="card mx-auto" style="width: 680px;">
+        <div class="card-header">
+            <h3>支付页面</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <form action="/users/addorder" method="post">
+                    <tr>
+                        <td>课程名称:<%=data.name%></td>
+                        <td>课程价格：<%=data.price%></td>
+                        <input type="hidden" name="price" value="<%=data.price%>">
+                        <input type="hidden" name="id" value="<%=data._id%>">
+                        <td><input class="btn btn-success" type="submit" value="立即支付"></td>
+                    </tr>
+                </form>
+            </table>
+        </div>
+    </div>
+</div>
+<%- include("../layout/footer.html")%>

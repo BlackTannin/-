@@ -1,0 +1,31 @@
+<%- include("./header.html")%>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-2">
+            <%- include("./sidemenu.html")%>
+        </div>
+        <div class="10">
+            <h3 class="mb-2">添加分类</h3>
+            <div class="card p-3">
+
+                <form action="/admin/addcategory" method="post">
+                    <div class="form-inline mb-2">
+                        <label for="categoryname">分类名称</label>
+                        <input type="text"  name="categoryname" class="form-control" id="categoryname" aria-describedby="categoryhelp">
+                        <small id="categoryhelp" class="form-text text-muted">请填写分类的名称，此栏不能为空</small>
+                    </div>
+                    <div class="form-inline mb-2">
+                        <label for="orderno">排序：</label>
+                        <input type="number" name="orderno" class="form-control" id="orderno">
+                    </div>
+                    <div class="form-group">
+                        <label for="submit"></label>
+                        <button type="submit" class="btn btn-success" id="submit">添加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("./footer.html")%>

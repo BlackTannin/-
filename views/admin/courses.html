@@ -1,0 +1,72 @@
+<%- include("./header.html")%>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-2">
+            <%- include("./sidemenu.html")%>
+        </div>
+        <div class="col-10">
+            <h3>课程列表</h3>
+
+            <div class="card p-3">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>编号：</td>
+                        <td>列表名称</td>
+                        <td>所属分类</td>
+                        <td>用户</td>
+
+                        <td>视频地址</td>
+                        <td>缩略图</td>
+                        <td>课程详情</td>
+
+                        <td>价格</td>
+                        <td>赞</td>
+                        <td>收藏</td>
+                        <td>浏览</td>
+                        <td>时间</td>
+                        <td>操作</td>
+                    </tr>
+                    <%data.forEach(function(course,i){%>
+                    <tr>
+                        <td><%=i+1%></td>                  <!--编号-->
+                        <td><%=course.name%></td>           <!--列表名称-->
+                        <td><%=course.category.name%></td>      <!--所属分类-->
+                        <td><%=course.user.username%></td>      <!--用户-->
+
+                        <td>
+                            <%if(course.source){%>
+                            <video width="175px" poster="/uploads/course/<%=course.thumbnail%>" src="<%=course.source%>" controls></video>
+                            <%}else{%>
+                            <video width="175px" poster="/uploads/course/1.jpg" src="<%=course.source%>" controls></video>
+                            <%}%>
+
+                        </td>                               <!--视频地址-->
+                        <td>
+                            <%if(course.thumbnail){%>
+                            <img src="/uploads/course/<%=course.thumbnail%>" width="175px" alt="">
+                            <%}else{%>
+                            <img src="/uploads/course/1.jpg" width="175px" alt="">
+                            <%}%>
+                        </td>                                <!--缩略图-->
+
+                        <td height="50px" width="100px">课程详情</td>       <!--课程详情-->
+
+                        <td><%=course.praise%></td>          <!--赞-->
+                        <td><%=course.collect%></td>             <!--收藏-->
+                        <td><%=course.browse%></td>             <!--浏览-->
+                        <td><%=course.price%></td>              <!--价格-->
+                        <td><%=course.ht_kc%></td>
+                        <td>
+                            <a class="btn btn-outline-primary" href="/admin/course/<%=course.id%>/edit">修改</a>
+                            <a  class="btn btn-outline-danger" href="/admin/course/<%=course.id%>/delete" onclick="return confirm('你确定要删除吗？')">删除</a>
+                        </td>
+                    </tr>
+                    <%})%>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("./footer.html")%>

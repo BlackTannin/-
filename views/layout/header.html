@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css">   <!--public是静态资源的根目录-->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/javascripts/jquery.js"></script>
+    <script src="/javascripts/bootstrap.js"></script>
+
+
+</head>
+<body>
+<div id="aaa">
+<%if(type && message){%>
+<div class="alert alert-<%=type%> alert-dismissible fade show" role="alert" id="condition">
+    <strong id="bbb"><%=message%></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<%}%>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">  <!--shadow阴影-->
+    <a class="navbar-brand" href="#">课程网</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" id="navlinks">     <!--去掉mr-auto，会跑到右侧-->
+            <li class="nav-item active">
+                <a class="nav-link" href="/">首页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    精品课程
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">if</a>
+                    <a class="dropdown-item" href="#">if</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#"> else </a>
+                </div>
+            </li>
+
+        </ul>
+        <form class="form-inline my-2 my-lg-0 mr-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <ul class="navbar-nav ">
+            <%if(!islogin){%>
+            <li class="nav-item">
+                <a class="nav-link" href="/users/login">登录</a>  <!--users是路由-->
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users/register">注册</a> <!--users是路由-->
+            </li>
+
+            <%}else{%>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <%=user.username%>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                    <a class="dropdown-item" href="/users/info">个人中心</a>
+                    <a class="dropdown-item" href="/users/mycourse">我的课程</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">退出</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/users/logout">注销</a>
+            </li>
+            <%}%>
+
+
+        </ul>
+
+
+    </div>
+</nav>
+<!--ajax-->
+<script>
+    $(function(){
+        $.ajax({
+            method:'GET',
+            url:'http://localhost:2000/category'
+        }).then(data=>{         /*不需要传参*/
+            var str = '';
+            data.result.forEach(function (category,i) {
+
+                str +='<li class="nav-item"> '+
+                    '<a class="nav-link" href="/category/'+category._id+'">'+category.name+'</a>' +
+                    '</li>';
+            })
+            /*找到一个对象append进去*/
+            $("#navlinks").append(str);
+        })
+    })
+</script>
+
+<!--flash 信息的自动消失-->
+<script>
+    $('aaa').anystretch();
+     var hideNotice = function(){
+         $("condition").fadeOut("slow");
+             };
+    setTimeout(hideNotice, 4000);
+</script>
+
+
+

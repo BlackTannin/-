@@ -1,0 +1,82 @@
+<%- include("layout/header.html")%>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-8 p-0">
+            <%if(course.thumbnail){%>
+            <video width="100%" poster="/uploads/course/<%=course.thumbnail%>" src="<%=course.source%>" controls></video>
+            <%}else{%>
+            <video width="100%" poster="/uploads/course/thumbnail-1585382439363.jpg" src="<%=course.source%>" controls></video>
+            <%}%>
+        </div>
+        <div class="col-4 p-0">
+            <div class="card p-3 position-relative" style="height: 100%">
+                <h3 class="mb-5"><%=course.name%></h3>
+                <h5 class="mt-0 text-danger">价格:&nbsp;&nbsp;&yen;<%=course.price%></h5>
+                <h6 class="mb-3">所属类别：<%=course.category.name%></h6>
+                <div class="media" style="font-size:12px;">
+                    <%if(course.user.headpic){%>
+                    <img src="/uploads/course/<%=course.user.headpic%>" class="mr-3 rounded-circle" alt="..." style="width:40px;height:40px;">
+                    <%}else{%>
+                    <img src="/uploads/course/1.jpg>" class="mr-3 rounded-circle" alt="..." style="width:40px;height:40px;">
+                    <%}%>
+
+                </div>
+                <div class="media-body">
+                    <h5 class="mt-0">作者：<%=course.user.username%></h5>
+                </div>
+                <div>
+                    课程发布时间:<%=course.qt_xq%>
+                </div>
+                <div>
+
+                </div>
+                <div class="position-absolute" id="xq_goumai">
+                    <a class="btn btn-success" href="/users/pay/<%=course.id%>">购买课程</a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>课程详情</h3>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="">
+                    <h4>推荐课程</h4>
+
+                </div>
+                <%top5.forEach(function(course,i){%>
+                <div class="card">
+                    <div class="container-fluid">
+
+                        <%if(course.thumbnail){%>
+                        <a class="linkthumbnail " href="/show/<%=course._id%>" >
+                            <img src="/uploads/course/<%=course.thumbnail%>" class="card-img-top " alt="课程名称">
+                        </a>
+                        <%}else{%>
+                        <a class="linkthumbnail " href="/show/<%=course._id%>">
+                            <img src="/uploads/course/1.jpg" class="card-img-top " alt="课程名称">
+                        </a>
+                        <%}%>
+                        <!--如果有图片就显示图片，没有就显示默认图片-->
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-text"><%=course.name%></h5>
+                        <p class="card-text">课程简介</p>
+                    </div>
+                </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include('layout/footer.html')%>

@@ -1,0 +1,35 @@
+<%- include("./header.html")%>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-2">
+            <%- include("./sidemenu.html")%>
+        </div>
+        <div class="col-10">
+            <h3>分类列表</h3>
+            <div class="card p-3">
+                <table class="table table-bordered" style="width:800px;">
+                    <tr>
+                        <td>编号：</td>
+                        <td>名称</td>
+                        <td>排序</td>
+                        <td>操作</td>
+                    </tr>
+                    <%data.forEach(function(category,i){%>
+                    <tr>
+                        <td><%=i+1%></td>
+                        <td><%=category.name%></td>
+                        <td><%=category.orderno%></td>
+                        <td>
+                            <a class="btn btn-outline-primary" href="/admin/category/<%=category.id%>/edit">修改</a>
+                            <a  class="btn btn-outline-danger" href="/admin/category/<%=category.id%>/delete" onclick="return confirm('你确定要删除吗？')">删除</a>
+                        </td>
+                    </tr>
+                    <%})%>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("./footer.html")%>

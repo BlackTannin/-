@@ -1,0 +1,47 @@
+label{
+    width:200px;
+    text-align: right;
+}
+.linkthumbnail{
+    display: block;
+    height: 174px;
+    overflow: hidden;
+}
+.courserlistcard{
+    height: 344px;
+}
+
+.editheadpic1{
+    width: 300px;
+    height: 300px;
+
+}
+.editheadpic2{
+    width: 300px;
+    height: 300px;
+
+}
+/*状态*/
+#aaa{position: absolute}
+#bbb{text-align: center}
+#condition{
+    width: 300px;
+    position: fixed;
+    z-index: 1000;
+    bottom: 20px;
+    right: 20px;
+    background: teal;
+    color: white;
+    padding: 20px;
+    -webkit-box-shadow: 6px 7px 9px -1px rgba(0,0,0,0.68);
+    -moz-box-shadow: 6px 7px 9px -1px rgba(0,0,0,0.68);
+    box-shadow: 6px 7px 9px -1px rgba(0,0,0,0.68);
+}
+#xq_goumai{
+    float: left;
+    position: relative;
+
+    bottom: 50px;
+
+
+}

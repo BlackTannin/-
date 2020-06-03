@@ -1,0 +1,47 @@
+<%- include("./header.html")%>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-2">
+            <%- include("./sidemenu.html")%>
+        </div>
+        <div class="col-10">
+            <h3>用户列表</h3>
+            <div class="my-1" style="width:400px;">
+
+            </div>
+            <div class="card p-3">
+                <table class="table table-bordered">
+                    <tr>
+                        <td>编号：</td>
+                        <td>头像</td>
+                        <td>用户名</td>
+                        <td>注册时间</td>
+                        <td>操作</td>
+                    </tr>
+                    <%data.forEach(function(user,i){%>
+                    <tr>
+                        <td><%=i+1%></td>
+                        <td>
+                        <%if(user.headpic){%>
+                        <img src="/uploads/course/<%=user.headpic%>" height="60">
+                        <%}else{%>
+                        <img src="/uploads/course/1.jpg" height="60">
+                        <%}%>
+                        </td>
+                        <td><%=user.username%></td>
+                        <td><%=user.yhcreate%></td>
+
+                        <td>
+                            <a class="btn btn-outline-primary" href="/admin/users/<%=user.id%>/edit">修改</a>
+                            <a  class="btn btn-outline-danger" href="/admin/users/<%=user.id%>/delete" onclick="return confirm('确保删除所有课程？')">删除</a>
+                        </td>
+                    </tr>
+                    <%})%>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include("./footer.html")%>
